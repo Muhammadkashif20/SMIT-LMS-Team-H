@@ -11,7 +11,7 @@ import Profile from "./pages/Students/Components/Profile";
 import Assignments from "./pages/Students/Components/ShowAssignment";
 const App = () => {
   return (
-    <div>
+    <div className="bg-[#F6F6F6] h-screen">
       <BrowserRouter>
         <Sidebar />
         <Routes>

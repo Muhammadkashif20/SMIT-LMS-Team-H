@@ -16,19 +16,21 @@ const { SubMenu } = Menu;
 
 const Sidebar = () => {
   return (
-    <Layout style={{ minHeight: "100vh", background: "#FFFFFF" }}>
+    <Layout >
       <Sider
-        width={250}
+        width={230}
         style={{
-          background: "#FFFFFF", // Background white
-          overflow: "auto", // Scrollable
-          padding: "10px", // Margin inside sidebar
+          background: "#FFFFFF",
+          overflow: "auto",
+          height: '100vh',
+          position: 'fixed',
+          left: 0,
         }}
-      >
+        >
         <div
           style={{
             color: "black",
-            padding: "20px",
+            padding: "16px",
             textAlign: "center",
             fontSize: "18px",
             fontWeight: "bold",
@@ -36,7 +38,7 @@ const Sidebar = () => {
             marginBottom: "10px", // Space below the header
           }}
         >
-          <img src={sideLogo} alt="" className="h-12 mx-12 mt-[-5vh]" />
+          <img src={sideLogo} alt="" className="h-12 mx-12 mt-[-1vh]" />
         </div>
         <Menu
           theme="light"
@@ -49,7 +51,7 @@ const Sidebar = () => {
             <Link to={"/Dashboard"}>Dashboard</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<FileSearchOutlined />}>
-            <Link to={"/Assignments"}>Show Assignments</Link>
+            <Link to={"/Assignments"}>Assignments</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<SettingOutlined />}>
             <Link to={"/Courses"}>Courses</Link>
