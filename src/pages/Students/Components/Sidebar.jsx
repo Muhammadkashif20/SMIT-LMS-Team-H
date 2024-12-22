@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Menu } from "antd";
-import sideLogo from "../../../../src/image/SMIT.png"
+import sideLogo from "../../../../src/image/SMIT.png";
 import {
   AppstoreOutlined,
   HistoryOutlined,
@@ -16,9 +16,9 @@ const { SubMenu } = Menu;
 
 const Sidebar = () => {
   return (
-    <Layout style={{ minHeight: "100vh",background: "#FFFFFF"}}>
+    <Layout style={{ minHeight: "100vh", background: "#FFFFFF" }}>
       <Sider
-          width={250}
+        width={250}
         style={{
           background: "#FFFFFF", // Background white
           overflow: "auto", // Scrollable
@@ -36,7 +36,7 @@ const Sidebar = () => {
             marginBottom: "10px", // Space below the header
           }}
         >
-          <img src={sideLogo} alt="" className="h-12 mx-12 mt-[-5vh]"/>
+          <img src={sideLogo} alt="" className="h-12 mx-12 mt-[-5vh]" />
         </div>
         <Menu
           theme="light"
@@ -46,40 +46,25 @@ const Sidebar = () => {
           }}
         >
           <Menu.Item key="1" icon={<AppstoreOutlined />}>
-          <Link to="/Dashboard">
-            Dashboard
-          </Link>
+            <Link to={"/Dashboard"}>Dashboard</Link>
           </Menu.Item>
-          
-
-          {/* Dropdown for History */}
-          <SubMenu
-            key="sub1"
-            icon={<HistoryOutlined />}
-            title="Assignments"
-            style={{ color: "black" }}
-          >
-            <Menu.Item key="2-1" icon={<FileSearchOutlined/>}>Show Assignments</Menu.Item>
-            <Menu.Item key="2-2" icon={<UploadOutlined/>}>Submit Assignments</Menu.Item>
-          </SubMenu>
-          
-          <Menu.Item key="2" icon={<SettingOutlined />}>
-            Courses
+          <Menu.Item key="2" icon={<FileSearchOutlined />}>
+            <Link to={"/Assignments"}>Show Assignments</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<SettingOutlined />}>
-            Layout
+            <Link to={"/Courses"}>Courses</Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<SettingOutlined />}>
-            Messages
+            <Link to={"/Layout"}>Layout</Link>
           </Menu.Item>
           <Menu.Item key="5" icon={<SettingOutlined />}>
-            Profile
+          <Link to={"/Messages"}>Messages</Link>
           </Menu.Item>
-          <Menu.Item key="6" icon={<FileTextOutlined />}>
-            Progress
+          <Menu.Item key="6" icon={<SettingOutlined />}>
+          <Link to={"/Profile"}>Profile</Link>
           </Menu.Item>
-          <Menu.Item key="6" icon={<FileTextOutlined />}>
-            Home
+          <Menu.Item key="7" icon={<FileTextOutlined />}>
+          <Link to={"/Progress"}>Progress</Link>
           </Menu.Item>
         </Menu>
       </Sider>
