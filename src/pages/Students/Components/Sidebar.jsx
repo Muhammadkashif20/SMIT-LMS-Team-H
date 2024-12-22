@@ -1,22 +1,26 @@
 import React from "react";
 import { Layout, Menu } from "antd";
+import sideLogo from "../../../../src/image/SMIT.png"
 import {
   AppstoreOutlined,
   HistoryOutlined,
   SettingOutlined,
-  StarOutlined,
   FileTextOutlined,
+  FileSearchOutlined,
+  UploadOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 const Sidebar = () => {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh",background: "#FFFFFF"}}>
       <Sider
+          width={250}
         style={{
-          background: "#f5f5f5", // Background white
+          background: "#FFFFFF", // Background white
           overflow: "auto", // Scrollable
           padding: "10px", // Margin inside sidebar
         }}
@@ -32,46 +36,50 @@ const Sidebar = () => {
             marginBottom: "10px", // Space below the header
           }}
         >
-          SMIT LMS
+          <img src={sideLogo} alt="" className="h-12 mx-12 mt-[-5vh]"/>
         </div>
         <Menu
           theme="light"
           mode="inline"
           style={{
-            background: "#f5f5f5",
+            background: "#FFFFFF",
           }}
         >
           <Menu.Item key="1" icon={<AppstoreOutlined />}>
-            Playground
+          <Link to="/Dashboard">
+            Dashboard
+          </Link>
           </Menu.Item>
+          
 
           {/* Dropdown for History */}
           <SubMenu
             key="sub1"
             icon={<HistoryOutlined />}
-            title="History"
+            title="Assignments"
             style={{ color: "black" }}
           >
-            <Menu.Item key="2-1">Activity Log</Menu.Item>
-            <Menu.Item key="2-2">Audit Trail</Menu.Item>
+            <Menu.Item key="2-1" icon={<FileSearchOutlined/>}>Show Assignments</Menu.Item>
+            <Menu.Item key="2-2" icon={<UploadOutlined/>}>Submit Assignments</Menu.Item>
           </SubMenu>
-
-          {/* Dropdown for Starred */}
-          <SubMenu
-            key="sub2"
-            icon={<StarOutlined />}
-            title="Starred"
-            style={{ color: "black" }}
-          >
-            <Menu.Item key="3-1">Favorites</Menu.Item>
-            <Menu.Item key="3-2">Important</Menu.Item>
-          </SubMenu>
-
-          <Menu.Item key="4" icon={<SettingOutlined />}>
-            Settings
+          
+          <Menu.Item key="2" icon={<SettingOutlined />}>
+            Courses
           </Menu.Item>
-          <Menu.Item key="5" icon={<FileTextOutlined />}>
-            Documentation
+          <Menu.Item key="3" icon={<SettingOutlined />}>
+            Layout
+          </Menu.Item>
+          <Menu.Item key="4" icon={<SettingOutlined />}>
+            Messages
+          </Menu.Item>
+          <Menu.Item key="5" icon={<SettingOutlined />}>
+            Profile
+          </Menu.Item>
+          <Menu.Item key="6" icon={<FileTextOutlined />}>
+            Progress
+          </Menu.Item>
+          <Menu.Item key="6" icon={<FileTextOutlined />}>
+            Home
           </Menu.Item>
         </Menu>
       </Sider>
