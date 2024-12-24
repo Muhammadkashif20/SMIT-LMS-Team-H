@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./pages/Students/Components/sidebar";
+import Sidebar from "./pages/Students/Components/Sidebar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Students/Components/Dashboard";
 import Home from "./pages/Students/Components/Home";
