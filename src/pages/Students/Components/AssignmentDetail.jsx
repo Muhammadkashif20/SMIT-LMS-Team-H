@@ -33,7 +33,7 @@ const AssignmentDetail = () => {
   const assignmentIdFind = assignments.find((data) => data.id == id);
 
   return (
-    <div>
+    <div    >
       {assignmentIdFind ? (
         <>  
           <h1>{assignmentIdFind.title}</h1>

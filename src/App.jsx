@@ -9,6 +9,7 @@ import Messages from "./pages/Students/Components/Messages";
 import Progress from "./pages/Students/Components/Progress";
 import Profile from "./pages/Students/Components/Profile";
 import Assignments from "./pages/Students/Components/ShowAssignment";
+import AssignmentDetail from "./pages/Students/Components/AssignmentDetail";
 const App = () => {
   return (
     <div className="bg-[#F6F6F6] h-screen">
@@ -22,7 +23,8 @@ const App = () => {
           <Route path="/Messages" element={<Messages />} />
           <Route path="/Progress" element={<Progress />} />
           <Route path="/Profile" element={<Profile />} />
-          <Route path="/Assignments/:id" element={<Assignments />} />
+          <Route path="/Assignments" element={<Assignments />} />
+          <Route path="/Assignments/:id" element={<AssignmentDetail />} />
         </Routes>
       </BrowserRouter>
     </div>
