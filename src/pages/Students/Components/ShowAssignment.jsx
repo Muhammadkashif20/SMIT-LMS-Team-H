@@ -35,7 +35,7 @@ const ShowAssignment = () => {
     {
       render: (_, record) => (
         <div className="flex space-x-2">
-          <Button type="primary">View</Button>
+          <Button type="primary" >View</Button>
           <Button type="default" onClick={()=>setVisibleModal(true)}>Submit</Button>
         </div>
       ),

@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/Messages" element={<Messages />} />
           <Route path="/Progress" element={<Progress />} />
           <Route path="/Profile" element={<Profile />} />
-          <Route path="/Assignments" element={<Assignments />} />
+          <Route path="/Assignments/:id" element={<Assignments />} />
         </Routes>
       </BrowserRouter>
     </div>
