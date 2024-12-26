@@ -47,33 +47,30 @@ const AssignmentDetail = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-10 ">
-      {/* Title and Detail outside the Card */}
       <div className="leading-10 mb-6 text-center ms-64">
         <h2 className="font-semibold text-[2rem] ">{assignmentIdFind.title}</h2>
         <p className="text-gray-500 font-semibold text-[1.2rem]">{assignmentIdFind.detail}</p>
       </div>
 
-      {/* Card with Heading Inside */}
       <Card
         bordered={false}
         style={{
-          width: "25%", // Narrow the card width
-          height: "200px", // Reduce card height
-          marginRight: "10%", // Move the card to the right
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", // Adding a stronger shadow for depth
-          borderRadius: "15px", // More rounded corners
-          padding: "2px", // Padding for inner spacing
+          width: "25%",
+          height: "200px", 
+          marginRight: "10%", 
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", 
+          borderRadius: "15px", 
+          padding: "2px", 
         }}
-        // Interactive hover effect
       >
-        <h3 className="font-semibold text-xl mb-4">Your Task</h3> {/* Heading Inside the Card */}
+        <h3 className="font-semibold text-xl mb-4">Your Task</h3> 
         <Button
           type="dashed"
           style={{
             width: "100%",
             marginBottom: "10px",
             borderRadius: "5px",
-            transition: "all 0.3s ease", // Smooth transition for hover effect
+            transition: "all 0.3s ease",
           }}
           className="hover:bg-gray-200"
         >
@@ -84,7 +81,7 @@ const AssignmentDetail = () => {
           style={{
             width: "100%",
             borderRadius: "5px",
-            transition: "all 0.3s ease", // Smooth transition for hover effect
+            transition: "all 0.3s ease", 
           }}
           className="hover:bg-blue-600"
         >
