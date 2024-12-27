@@ -1,12 +1,7 @@
 import React from "react";
 import { Layout, Menu } from "antd";
 import sideLogo from "../../../../src/image/SMIT.png";
-import {
-  AppstoreOutlined,
-  FileSearchOutlined,
-  SettingOutlined,
-  FileTextOutlined,
-} from "@ant-design/icons";
+import { AppstoreOutlined, FileSearchOutlined, BookOutlined, LayoutOutlined, MessageOutlined, UserOutlined, BarChartOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 
 const { Sider } = Layout;
@@ -25,29 +20,30 @@ const Sidebar = () => {
     },
     {
       key: "3",
-      icon: <SettingOutlined />,
+      icon: <BookOutlined />,
       label: <Link to="/Courses">Courses</Link>,
     },
     {
       key: "4",
-      icon: <SettingOutlined />,
+      icon: <LayoutOutlined />,
       label: <Link to="/Layout">Layout</Link>,
     },
     {
       key: "5",
-      icon: <SettingOutlined />,
+      icon: <MessageOutlined />,
       label: <Link to="/Messages">Messages</Link>,
     },
     {
       key: "6",
-      icon: <SettingOutlined />,
+      icon: <UserOutlined />,
       label: <Link to="/Profile">Profile</Link>,
     },
     {
       key: "7",
-      icon: <FileTextOutlined />,
+      icon: <BarChartOutlined />,
       label: <Link to="/Progress">Progress</Link>,
     },
+    
   ];
 
   return (
