@@ -45,8 +45,10 @@ const ShowAssignment = () => {
     {
       render: (_, record) => (
         <div className="flex space-x-2">
-          <Button type="primary" onClick={()=>handleViewAssignment(record.id)}>View</Button>
-          <Button type="default" onClick={()=>setVisibleModal(true)}>Submit</Button>
+          <Button type="primary" onClick={()=>handleViewAssignment(record.id)}>View </Button>
+          {/* <Button type="default" onClick={()=>setVisibleModal(true)}>Submit</Button> */}
+          <Button type="dashed" onClick={()=>setVisibleModal(true)}>Edit</Button>
+          <Button type="default" >Delete</Button>
         </div>
       ),
     },

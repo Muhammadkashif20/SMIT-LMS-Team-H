@@ -4,10 +4,11 @@
     const SubmitAssignment = ({visibleModal,setVisibleModal}) => {
         const [titleValue,setTitleValue]=useState("")
         const [descriptionValue,setDescriptionValue]=useState("")
-        const [fileSaveValue,setFileValue]=useState("")
+        const [fileValue,setFileValue]=useState([])
         function handleModalSubmit(e) {
         console.log("titleValue=>",titleValue);
         console.log("descriptionValue=>",descriptionValue);
+        console.log("fileValue=>",fileValue);
         }
     return (
         <div>
@@ -46,8 +47,10 @@
                 <Upload
                 beforeUpload={() => false} // File ko directly upload nahi karna
                 maxCount={1}
+                fileList={fileValue}
+                onChange={(info)=>setFileValue(info.fileList)}
                 >
-                <Button icon={<UploadOutlined />} onChange={(e)=>setFileValue(e.target.value)}> Choose File</Button>
+                <Button icon={<UploadOutlined />} > Choose File</Button>
                 </Upload>
             </Form.Item>
 
