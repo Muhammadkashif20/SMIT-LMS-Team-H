@@ -1,26 +1,33 @@
     import React, { useState } from 'react';
     import { Modal,Upload, Input, Form,Button } from 'antd';
     import {UploadOutlined} from "@ant-design/icons"
+    import { message, Space } from 'antd';
     const SubmitAssignment = ({visibleModal,setVisibleModal}) => {
         const [titleValue,setTitleValue]=useState("")
         const [descriptionValue,setDescriptionValue]=useState("")
         const [fileValue,setFileValue]=useState([])
-        function handleModalSubmit(e) {
-        console.log("titleValue=>",titleValue);
-        console.log("descriptionValue=>",descriptionValue);
-        console.log("fileValue=>",fileValue);
+        const [messageApi, contextHolder] = message.useMessage();
+        function handleModalSubmit() {
+        console.log("AssignmentTitle=>",titleValue,"AssignmentDescription=>",descriptionValue,"AssignmentFile=>",fileValue);
+        messageApi.open({
+            type: 'success',
+            content: 'Your Assignment is Submited Successfully!',
+          }); 
+          setVisibleModal(false)
         }
+    
     return (
         <div>
        
         <Modal
-            title="File Upload Example"
+            title="Submit Your Assignment"
             open={visibleModal}  
             onCancel={() => setVisibleModal(false)}
             footer={null}
             width={600}
+            
         >
-            <Form>
+            <Form onFinish={handleModalSubmit}>
             <Form.Item
                 label="Title"
                 name="title"
@@ -55,9 +62,12 @@
             </Form.Item>
 
             <Form.Item>
-                <Button onClick={handleModalSubmit} type="primary" block>
+                {contextHolder}
+                <Space>
+                <Button  htmlType='submit' type="primary" block>
                 Submit
                 </Button>
+                </Space>
             </Form.Item>
             </Form>
         </Modal>
