@@ -23,11 +23,7 @@ const Sidebar = () => {
       icon: <BookOutlined />,
       label: <Link to="/Courses">Courses</Link>,
     },
-    {
-      key: "4",
-      icon: <LayoutOutlined />,
-      label: <Link to="/Layout">Layout</Link>,
-    },
+   
     {
       key: "5",
       icon: <MessageOutlined />,
@@ -38,11 +34,7 @@ const Sidebar = () => {
       icon: <UserOutlined />,
       label: <Link to="/Profile">Profile</Link>,
     },
-    {
-      key: "7",
-      icon: <BarChartOutlined />,
-      label: <Link to="/Progress">Progress</Link>,
-    },
+   
     
   ];
 

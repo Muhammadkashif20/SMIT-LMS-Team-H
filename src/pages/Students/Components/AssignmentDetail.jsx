@@ -39,6 +39,7 @@ const AssignmentDetail = () => {
     return (
       <Result
         status="404"
+        className="h-screen bg-[#F6F6F6]"
         title="Assignment Not Found"
         subTitle="Sorry, the assignment you're looking for doesn't exist."
       />
