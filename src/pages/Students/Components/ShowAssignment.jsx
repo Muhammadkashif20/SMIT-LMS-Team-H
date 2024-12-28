@@ -60,7 +60,7 @@ const ShowAssignment = () => {
     },
   ];
   return (
-    <div className="mx-72  my-6 ">
+    <div className="mx-72  my-6 h-screen bg-[#F6F6F6]">
       <h1 className=" font-semibold text-2xl">View Assignments!</h1>
       <Table
         className="my-6 "

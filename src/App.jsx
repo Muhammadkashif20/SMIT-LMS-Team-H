@@ -19,7 +19,7 @@ const SidebarManage = () => {
 
 const App = () => {
   return (
-    <div className="bg-[#F6F6F6] h-screen">
+    <div className="bg-[#F6F6F6] h-full ">
       <BrowserRouter>
         <SidebarManage />
         <Routes>

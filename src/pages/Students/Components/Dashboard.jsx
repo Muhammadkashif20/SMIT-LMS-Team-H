@@ -2,7 +2,7 @@ import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='h-screen bg-[#F6F6F6]'>
        <div className='my-5 mx-72'>
       <div className='leading-10'>
       <h1 className='font-semibold text-[1.90rem]'>Hi! Muhammad Kashif 😎</h1>
