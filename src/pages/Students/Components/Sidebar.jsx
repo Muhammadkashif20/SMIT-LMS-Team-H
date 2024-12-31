@@ -46,7 +46,8 @@ const Sidebar = () => {
   return (
     <Layout>
       <Sider
-        width={230}
+        className="sidebar"  
+        width={230}      
         collapsed={collapsed}
         style={{
           background: "#FFFFFF",
