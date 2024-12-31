@@ -1,8 +1,10 @@
 import { Button, Table } from "antd";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import SubmitAssignment from "./SubmitAssignment";
 import { useNavigate } from "react-router-dom";
+import { sideBarContext } from "../../../Context/SidebarContext";
 const ShowAssignment = () => {
+  const { collapsed } = useContext(sideBarContext);
   const [visibleModal, setVisibleModal] = useState(false);
   const navigate = useNavigate();
   const dataSource = [
@@ -25,7 +27,7 @@ const ShowAssignment = () => {
       key: "4",
       id: 4,
       name: "Sir Bilal New Assignment : Create a Responsive Portfolio Website",
-    }, 
+    },
     {
       key: "5",
       id: 5,
@@ -60,10 +62,11 @@ const ShowAssignment = () => {
     },
   ];
   return (
-    <div className="mx-72  my-6 h-screen bg-[#F6F6F6]">
+    <div className={`${!collapsed?"mx-72":"mx-32"}   my-6 h-screen bg-[#F6F6F6]`}>
       <h1 className=" font-semibold text-2xl">View Assignments!</h1>
       <Table
-        className="my-6 "
+      style={{width:"50rem"}}
+        className="my-6"
         dataSource={dataSource}
         columns={columns}
         pagination={false}

@@ -1,12 +1,20 @@
-import React from "react";
-import { Layout, Menu } from "antd";
+import React, { useContext} from "react";
+import { Layout, Menu, Button } from "antd";
 import sideLogo from "../../../../src/image/SMIT.png";
-import { AppstoreOutlined, FileSearchOutlined, BookOutlined, LayoutOutlined, MessageOutlined, UserOutlined, BarChartOutlined } from '@ant-design/icons';
+import {
+  AppstoreOutlined,
+  FileSearchOutlined,
+  BookOutlined,
+  MessageOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { sideBarContext } from "../../../Context/SidebarContext";
 
 const { Sider } = Layout;
 
 const Sidebar = () => {
+  const {collapsed,setCollapsed}=useContext(sideBarContext)
   const menuItems = [
     {
       key: "1",
@@ -23,7 +31,6 @@ const Sidebar = () => {
       icon: <BookOutlined />,
       label: <Link to="/Courses">Courses</Link>,
     },
-   
     {
       key: "5",
       icon: <MessageOutlined />,
@@ -34,14 +41,13 @@ const Sidebar = () => {
       icon: <UserOutlined />,
       label: <Link to="/Profile">Profile</Link>,
     },
-   
-    
   ];
 
   return (
     <Layout>
       <Sider
         width={230}
+        collapsed={collapsed}
         style={{
           background: "#FFFFFF",
           overflow: "auto",
@@ -61,7 +67,9 @@ const Sidebar = () => {
             marginBottom: "10px",
           }}
         >
-          <img src={sideLogo} alt="" className="h-12 mx-12 mt-[-1vh]" />
+          {!collapsed && (
+            <img src={sideLogo} alt="Logo" className="h-12 mx-auto" />
+          )}
         </div>
         <Menu
           theme="light"
@@ -71,6 +79,19 @@ const Sidebar = () => {
           }}
           items={menuItems}
         />
+        <Button
+          type="primary"
+          onClick={() => setCollapsed(!collapsed)}
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            left: collapsed ? "18px" : "60px",
+            width: collapsed ? "40px" : "100px",
+            transition: "all 0.3s",
+          }}
+        >
+          {collapsed ? ">" : "< Collapse"}
+        </Button>
       </Sider>
     </Layout>
   );
