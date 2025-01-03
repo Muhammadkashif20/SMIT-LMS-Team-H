@@ -1,6 +1,7 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { Layout, Menu, Button } from "antd";
-import sideLogo from "../../../../src/image/SMIT.png";
+import sideLogo from "../src/image/SMIT.png";
+
 import {
   AppstoreOutlined,
   FileSearchOutlined,
@@ -9,45 +10,45 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { sideBarContext } from "../../../Context/SidebarContext";
+import { sideBarContext } from "../src/Context/SidebarContext";
 
 const { Sider } = Layout;
 
 const Sidebar = () => {
-  const {collapsed,setCollapsed}=useContext(sideBarContext)
+  const { collapsed, setCollapsed } = useContext(sideBarContext);
   const menuItems = [
     {
       key: "1",
       icon: <AppstoreOutlined />,
-      label: <Link to="/Dashboard">Dashboard</Link>,
+      label: <Link to="/Students/Dashboard">Dashboard</Link>,
     },
     {
       key: "2",
       icon: <FileSearchOutlined />,
-      label: <Link to="/Assignments">Assignments</Link>,
+      label: <Link to="/Students/Assignments">Assignments</Link>,
     },
     {
       key: "3",
       icon: <BookOutlined />,
-      label: <Link to="/Courses">Courses</Link>,
+      label: <Link to="/Students/Courses">Courses</Link>,
     },
     {
       key: "5",
       icon: <MessageOutlined />,
-      label: <Link to="/Messages">Messages</Link>,
+      label: <Link to="/Students/Messages">Messages</Link>,
     },
     {
       key: "6",
       icon: <UserOutlined />,
-      label: <Link to="/Profile">Profile</Link>,
+      label: <Link to="/Students/Profile">Profile</Link>,
     },
   ];
 
   return (
     <Layout>
       <Sider
-        className="sidebar"  
-        width={230}      
+        className="sidebar"
+        width={230}
         collapsed={collapsed}
         style={{
           background: "#FFFFFF",
@@ -60,7 +61,8 @@ const Sidebar = () => {
         <div
           style={{
             color: "black",
-            padding: "16px",
+            padding:"16px",
+            marginLeft:"60px",
             textAlign: "center",
             fontSize: "18px",
             fontWeight: "bold",
@@ -68,9 +70,9 @@ const Sidebar = () => {
             marginBottom: "10px",
           }}
         >
-          {!collapsed && (
-            <img src={sideLogo} alt="Logo" className="h-12 mx-auto" />
-          )}
+            {!collapsed && (
+              <img src={sideLogo} className="mx-24" alt="Logo" width={70} />
+            )}
         </div>
         <Menu
           theme="light"

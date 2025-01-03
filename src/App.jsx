@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import Sidebar from "./pages/Students/Components/Sidebar";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Dashboard from "./pages/Students/Components/Dashboard";
 import Home from "./pages/Students/Components/Home";
@@ -10,6 +9,7 @@ import Profile from "./pages/Students/Components/Profile";
 import Assignments from "./pages/Students/Components/ShowAssignment";
 import AssignmentDetail from "./pages/Students/Components/AssignmentDetail";
 import Login from "./auth/Login";
+import Sidebar from "../Components/Sidebar";
 
 const SidebarManage = () => {
   const location = useLocation();
