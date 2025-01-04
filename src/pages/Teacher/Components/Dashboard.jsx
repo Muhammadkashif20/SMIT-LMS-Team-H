@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { sideBarContext } from "../../../Context/SidebarContext";
 
 const Dashboard = () => {
-  return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
-  )
-}
+  const { collapsed } = useContext(sideBarContext);
 
-export default Dashboard
+  return (
+    <div className={` ${!collapsed ? "mx-72" : "mx-32"} h-screen bg-[#F6F6F6]`}>
+      <h1 className="font-semibold text-2xl">Dashboard</h1>
+    </div>
+  );
+};
+
+export default Dashboard;

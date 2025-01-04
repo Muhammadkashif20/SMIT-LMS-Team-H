@@ -3,43 +3,60 @@ import { Layout, Menu, Button } from "antd";
 import sideLogo from "../../../image/SMIT.png";
 
 import {
-  AppstoreOutlined,
-  FileSearchOutlined,
-  BookOutlined,
+  HomeOutlined,
+  FileAddOutlined,
   MessageOutlined,
+  NotificationOutlined,
+  CommentOutlined,
+  BookOutlined,
+  TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { sideBarContext } from "../../../Context/SidebarContext";
 
 const { Sider } = Layout;
+const { SubMenu } = Menu;
 
 const Sidebar = () => {
   const { collapsed, setCollapsed } = useContext(sideBarContext);
+
   const menuItems = [
     {
       key: "1",
-      icon: <AppstoreOutlined />,
+      icon: <HomeOutlined />,
       label: <Link to="/Teacher/Dashboard">Dashboard</Link>,
     },
     {
       key: "2",
-      icon: <FileSearchOutlined />,
-      label: <Link to="/Teacher/AssignmentManage">Assignment </Link>,
+      icon: <FileAddOutlined />,
+      label: <Link to="/Teacher/AssignmentManage">Assignments</Link>,
     },
     {
       key: "3",
-      icon: <BookOutlined />,
+      icon: <CommentOutlined />,
       label: <Link to="/Teacher/Communication">Communication</Link>,
+      children: [
+        {
+          key: "3-1",
+          icon: <MessageOutlined />,
+          label: <Link to="/Teacher/Messages">Messages</Link>,
+        },
+        {
+          key: "3-2",
+          icon: <NotificationOutlined />, 
+          label: <Link to="/Teacher/Announcement">Announcement</Link>,
+        },
+        ]
     },
     {
       key: "4",
-      icon: <MessageOutlined />,
-      label: <Link to="/Teacher/CoursesManage">Courses </Link>,
+      icon: <BookOutlined />,
+      label: <Link to="/Teacher/CoursesManage">Courses</Link>,
     },
     {
       key: "5",
-      icon: <UserOutlined />,
+      icon: <TeamOutlined />,
       label: <Link to="/Teacher/TrackingStudent">Tracking Student</Link>,
     },
     {
@@ -75,7 +92,6 @@ const Sidebar = () => {
             marginBottom: "10px",
           }}
         >
-          {/* Logo alignment */}
           <div
             style={{
               display: "flex",
@@ -97,7 +113,7 @@ const Sidebar = () => {
             )}
           </div>
         </div>
-        
+
         <Menu
           theme="light"
           mode="inline"
@@ -105,8 +121,27 @@ const Sidebar = () => {
             background: "#FFFFFF",
             padding: "0 10px",
           }}
-          items={menuItems}
-        />
+        >
+          {menuItems.map((item) =>
+            item.children ? (
+              <SubMenu
+                key={item.key}
+                icon={item.icon}
+                title={item.label}
+              >
+                {item.children.map((child) => (
+                  <Menu.Item key={child.key} icon={child.icon}>
+                    {child.label}
+                  </Menu.Item>
+                ))}
+              </SubMenu>
+            ) : (
+              <Menu.Item key={item.key} icon={item.icon}>
+                {item.label}
+              </Menu.Item>
+            )
+          )}
+        </Menu>
 
         <Button
           type="primary"

@@ -10,7 +10,7 @@ const Login = () => {
     console.log("emailValue=>", values.email);
     console.log("passValue=>", values.password);
     form.resetFields("");
-    navigate("/Student/Dashboard");
+    navigate("/Teacher/Dashboard");
   }
 
   return (

@@ -10,7 +10,6 @@ import Profile from "./Profile";
 const Teacher = () => {
   return (
     <div>
-      <h1>Hello Teacher</h1>
       <Routes>
         <Route path="/Dashboard" element={<Dashboard />}></Route>
         <Route path="/AssignmentManage" element={<AssignmentManage />}></Route>
