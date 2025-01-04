@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Layout, Menu, Button } from "antd";
-import sideLogo from "../src/image/SMIT.png";
+import sideLogo from "../../../image/SMIT.png";
 
 import {
   AppstoreOutlined,
@@ -10,7 +10,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { sideBarContext } from "../src/Context/SidebarContext";
+import { sideBarContext } from "../../../Context/SidebarContext";
 
 const { Sider } = Layout;
 
@@ -20,27 +20,32 @@ const Sidebar = () => {
     {
       key: "1",
       icon: <AppstoreOutlined />,
-      label: <Link to="/Students/Dashboard">Dashboard</Link>,
+      label: <Link to="/Teacher/Dashboard">Dashboard</Link>,
     },
     {
       key: "2",
       icon: <FileSearchOutlined />,
-      label: <Link to="/Students/Assignments">Assignments</Link>,
+      label: <Link to="/Teacher/AssignmentManage">Assignment </Link>,
     },
     {
       key: "3",
       icon: <BookOutlined />,
-      label: <Link to="/Students/Courses">Courses</Link>,
+      label: <Link to="/Teacher/Communication">Communication</Link>,
+    },
+    {
+      key: "4",
+      icon: <MessageOutlined />,
+      label: <Link to="/Teacher/CoursesManage">Courses </Link>,
     },
     {
       key: "5",
-      icon: <MessageOutlined />,
-      label: <Link to="/Students/Messages">Messages</Link>,
+      icon: <UserOutlined />,
+      label: <Link to="/Teacher/TrackingStudent">Tracking Student</Link>,
     },
     {
       key: "6",
       icon: <UserOutlined />,
-      label: <Link to="/Students/Profile">Profile</Link>,
+      label: <Link to="/Teacher/Profile">Profile</Link>,
     },
   ];
 
@@ -56,13 +61,13 @@ const Sidebar = () => {
           height: "100vh",
           position: "fixed",
           left: 0,
+          transition: "width 0.3s ease",
         }}
       >
         <div
           style={{
             color: "black",
-            padding:"16px",
-            marginLeft:"60px",
+            padding: "8px",
             textAlign: "center",
             fontSize: "18px",
             fontWeight: "bold",
@@ -70,18 +75,39 @@ const Sidebar = () => {
             marginBottom: "10px",
           }}
         >
+          {/* Logo alignment */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
             {!collapsed && (
-              <img src={sideLogo} className="mx-24" alt="Logo" width={70} />
+              <img
+                src={sideLogo}
+                alt="Logo"
+                style={{
+                  width: "70px",
+                  height: "70px",
+                  objectFit: "contain",
+                }}
+              />
             )}
+          </div>
         </div>
+        
         <Menu
           theme="light"
           mode="inline"
           style={{
             background: "#FFFFFF",
+            padding: "0 10px",
           }}
           items={menuItems}
         />
+
         <Button
           type="primary"
           onClick={() => setCollapsed(!collapsed)}
@@ -90,10 +116,11 @@ const Sidebar = () => {
             bottom: "20px",
             left: collapsed ? "18px" : "60px",
             width: collapsed ? "40px" : "100px",
-            transition: "all 0.3s",
+            transition: "all 0.3s ease",
+            borderRadius: "5px",
           }}
         >
-          {collapsed ? ">" : "< Collapse"}
+          {collapsed ? ">" : "Collapse"}
         </Button>
       </Sider>
     </Layout>

@@ -1,42 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card, Form, Input, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [form] = Form.useForm();
+
   function handleLogin(values) {
     console.log("emailValue=>", values.email);
     console.log("passValue=>", values.password);
-    form.resetFields("")
-    navigate("/Dashboard")
+    form.resetFields("");
+    navigate("/Student/Dashboard");
   }
+
   return (
-    <div
-      style={{
-        marginTop: "-15rem",
-        marginRight: "5rem",
-        display: "flex",
-        justifyContent: "end",
-        alignItems: "center",
-        backgroundColor: "#f5f5f5",
-      }}
-    >
+    <div className="flex justify-between items-center h-screen px-12 bg-gray-100">
+      {/* Left Section */}
+      <div>
+        <h1 className="text-3xl font-semibold mb-4">
+          Login into Your SMIT Students Portal 🔒
+        </h1>
+        <p className="text-lg text-gray-600">
+          Welcome to the SMIT LMS Portal! Please Login & Move To Students
+          Dashboard.
+        </p>
+      </div>
+
+      {/* Right Section */}
       <Card
         title="Login to Your Account"
         bordered={false}
-        style={{ width: 400 }}
-        headStyle={{
-          textAlign: "center",
-          fontSize: "18px",
-          fontWeight: "bold",
-        }}
+        className="w-full max-w-sm shadow-lg rounded-xl text-center"
       >
         <Form
           form={form}
           name="loginForm"
           layout="vertical"
-          style={{ marginTop: 16 }}
+          className="mt-4"
           autoComplete="off"
           onFinish={handleLogin}
         >
@@ -50,18 +50,20 @@ const Login = () => {
           >
             <Input
               placeholder="Enter your email"
-              style={{ padding: "10px" }}
+              className="p-3 rounded-md"
             />
           </Form.Item>
 
           <Form.Item
             label="Password"
             name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
+            rules={[
+              { required: true, message: "Please input your password!" },
+            ]}
           >
             <Input.Password
               placeholder="Enter your password"
-              style={{ padding: "10px" }}
+              className="p-3 rounded-md"
             />
           </Form.Item>
 
@@ -69,7 +71,7 @@ const Login = () => {
             <Button
               type="primary"
               block
-              style={{ fontWeight: "bold", marginTop: "10px" }}
+              className="font-bold mt-4 bg-blue-500 border-none p-3 rounded-md"
               htmlType="submit"
             >
               Login
@@ -77,10 +79,10 @@ const Login = () => {
           </Form.Item>
         </Form>
 
-        <div style={{ textAlign: "center", marginTop: 10 }}>
+        <div className="text-center mt-3">
           <span>
             Don't have an account?{" "}
-            <a href="#" style={{ color: "#1890ff" }}>
+            <a href="#" className="text-blue-500">
               Register now
             </a>
           </span>

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Card } from "antd";
-import WebDev from "../../../../src/image/webdev2.jpeg";
 import {
   UserOutlined,
   MailOutlined,
@@ -11,22 +10,19 @@ import {
 import { sideBarContext } from "../../../Context/SidebarContext";
 const Courses = () => {
   const { collapsed } = useContext(sideBarContext);
-
   return (
+    <div className="h-screen bg-[#F6F6F6]">
+
     <div
       className={`my-5 ${
         !collapsed ? "mx-72" : "mx-32"
-      } overflow-hidden h-screen bg-[#F6F6F6]`}
+      } overflow-hidden`}
     >
       <h1 className="font-semibold text-2xl">Enrolled Course!</h1>
       <Card className="w-[380px] mt-8 overflow-hidden shadow-md rounded-lg hover:shadow-lg transition-shadow">
-        <img
-          src={WebDev}
-          alt="Web Development Bootcamp"
-          className="w-full mb-4 h-[200px] object-cover rounded-md"
-        />
-        <h1 className="font-semibold text-[1.4rem] text-gray-800 mb-2 text-left w-full">
-          Web & App Development
+        
+        <h1 className="font-semibold text-[1.3rem] text-gray-800 mb-2 text-left w-full">
+          Web & Mobile App Development
         </h1>
         <p className="text-gray-500 text-[0.9rem] font-bold mb-4 text-left w-full">
           Duration: 1 Year
@@ -57,6 +53,7 @@ const Courses = () => {
         </div>
       </Card>
     </div>
+      </div>
   );
 };
 
