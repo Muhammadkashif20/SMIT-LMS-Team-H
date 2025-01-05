@@ -2,6 +2,7 @@
   import { sideBarContext } from "../../../Context/SidebarContext";
   import { Typography, Button } from "antd";
   import { PhoneOutlined, MailOutlined, LinkedinOutlined } from "@ant-design/icons";
+  import banner from "../../../image/SMIT.png";
 
   const { Title, Text } = Typography;
 
@@ -17,14 +18,19 @@
       >
         {/* Banner Section */}
         <div
+        className="bg-gray-50"
           style={{
-            background: "linear-gradient(to right, #4facfe, #00f2fe)",
             height: "200px",
             borderTopLeftRadius:"10px",
             borderTopRightRadius:"10px",
             position: "relative",
           }}
         >
+           <img
+              src={banner}
+              alt="banner"
+              className="w-48 pt-5 mx-96"
+            />
           {/* Profile Image */}
           <div
             style={{
