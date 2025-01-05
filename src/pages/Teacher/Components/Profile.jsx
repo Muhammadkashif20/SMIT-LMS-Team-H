@@ -10,8 +10,8 @@
 
     return (
       <div
-        className={`flex-1 min-h-screen bg-[#F6F6F6] overflow-x-hidden p-8 ${
-          !collapsed ? "ml-72" : "ml-32"
+        className={`flex-1 min-h-screen bg-[#F6F6F6] overflow-x-hidden p-6 ${
+          !collapsed ? "ml-56" : "ml-32"
         }`}
         style={{ marginBottom: "-8px" }}
       >
@@ -34,7 +34,7 @@
               border: "5px solid white",
               overflow: "hidden",
               position: "absolute",
-              top: "155px",
+              top: "160px",
               left: "10%",
               transform: "translateX(-50%)",
             }}
@@ -51,16 +51,13 @@
         <div
           style={{
             background: "white",
-            padding: "40px 20px",
-            borderTopLeftRadius:"10px",
-            borderTopRightRadius:"10px",
+            padding: "10px 30px",
             borderBottomLeftRadius:"10px",
             borderBottomRightRadius:"10px",
-            textAlign: "center",
           }}
         >
           {/* Name and Designation */}
-          <div>
+          <div className="mx-36 mb-10">
             <Title level={3} style={{ color: "#000", margin: 0 }}>
               Sir Bilal Raza
             </Title>
@@ -68,8 +65,14 @@
               SMIT Web & App Teacher
             </Text>
           </div>
-
+          </div>
           {/* Bio Section */}
+          <div style={{
+            background: "white",
+            padding: "10px 30px",
+            marginTop:"10px",
+            borderRadius:"10px",
+          }}>
           <div style={{ marginTop: "20px" }}>
             <Title level={4} style={{ color: "#000" }}>
               About Me
@@ -86,7 +89,7 @@
             <Title level={4} style={{ color: "#000" }}>
               Contact Information
             </Title>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
               <Button
                 type="link"
                 icon={<MailOutlined />}
@@ -95,8 +98,9 @@
                   fontSize: "16px",
                   textAlign: "left",
                   padding: "0",
+                  justifyContent: "flex-start",
                 }}
-              >
+                >
                 codeaurbilal@gmail.com
               </Button>
               <Button
@@ -105,6 +109,7 @@
                 style={{
                   color: "#4facfe",
                   fontSize: "16px",
+                  justifyContent: "flex-start",
                   textAlign: "left",
                   padding: "0",
                 }}
@@ -117,15 +122,16 @@
                 style={{
                   color: "#4facfe",
                   fontSize: "16px",
+                  justifyContent: "flex-start",
                   textAlign: "left",
                   padding: "0",
                 }}
-              >
+                >
                 linkedin.com/in/codeaurbilal
               </Button>
             </div>
           </div>
-        </div>
+                </div>
       </div>
     );
   };
