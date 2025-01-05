@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import AssignmentManage from "./AssignmentManage";
 import CoursesManage from "./CoursesManage";
 import Communication from "./Communication";
 import TrackingStudent from "./TrackingStudent";
+import AssignmentManage from "./AssignmentManage";
 import Profile from "./Profile";
 
 const Teacher = () => {

@@ -11,6 +11,8 @@ import {
   BookOutlined,
   TeamOutlined,
   UserOutlined,
+  EditOutlined ,
+  LineChartOutlined ,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { sideBarContext } from "../../../Context/SidebarContext";
@@ -30,24 +32,13 @@ const Sidebar = () => {
     {
       key: "2",
       icon: <FileAddOutlined />,
-      label: <Link to="/Teacher/AssignmentManage">Assignments</Link>,
+      label:<Link to="/Teacher/AssignmentManage">Assignments</Link>,
+
     },
     {
       key: "3",
       icon: <CommentOutlined />,
       label: <Link to="/Teacher/Communication">Communication</Link>,
-      children: [
-        {
-          key: "3-1",
-          icon: <MessageOutlined />,
-          label: <Link to="/Teacher/Messages">Messages</Link>,
-        },
-        {
-          key: "3-2",
-          icon: <NotificationOutlined />, 
-          label: <Link to="/Teacher/Announcement">Announcement</Link>,
-        },
-        ]
     },
     {
       key: "4",

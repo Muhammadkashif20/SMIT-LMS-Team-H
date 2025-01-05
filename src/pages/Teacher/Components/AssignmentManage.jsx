@@ -91,10 +91,6 @@ const AssignmentManage = () => {
           fontSize: "14px",
         }}
       >
-        <Text>
-          Need help? Visit the <a href="http://localhost:5173">SMIT Portal</a> for more
-          information.
-        </Text>
       </div>
     </div>
   );
