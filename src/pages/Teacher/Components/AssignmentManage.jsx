@@ -1,97 +1,124 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { sideBarContext } from "../../../Context/SidebarContext";
-import { Card, Row, Col, Button, Typography, Space } from "antd";
-import {
-  EditOutlined,
-  CheckCircleOutlined,
-  LineChartOutlined,
-} from "@ant-design/icons";
+import { Table, Button, Typography, message, Modal, Form, Input } from "antd";
+// import { EditOutlined, CheckCircleOutlined, LineChartOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 
 const AssignmentManage = () => {
   const { collapsed } = useContext(sideBarContext);
-
-  const sections = [
+  const [modal, setModal] = useState(false);
+  const [assignment,setAssignment]=useState("")
+  const [assignmentDes,SetAssignmentDes]=useState("")
+  const [file,setFile]=useState("")
+  const [dueDate,setdueDate]=useState("")
+  const [messageApi, contextHolder] = message.useMessage();
+  const [dataSource, setDataSource] = useState([
     {
-      title: "Create Assignments",
-      icon: <EditOutlined style={{ fontSize: "36px", color: "#1890ff" }} />,
-      description: "Easily design and publish assignments for your students.",
-      buttonText: "Create Now",
+      key: "1",
+      title: "React Basics",
+      description: "Introduction to React components and state management.",
+      dueDate: "2025-01-15",
+      file: "react_basics.pdf",
     },
     {
-      title: "Review Submissions",
-      icon: (
-        <CheckCircleOutlined style={{ fontSize: "36px", color: "#52c41a" }} />
-      ),
-      description: "Review and provide constructive feedback on submissions.",
-      buttonText: "Start Reviewing",
+      key: "2",
+      title: "Advanced CSS",
+      description: "Learn advanced CSS techniques and responsive design.",
+      dueDate: "2025-01-20",
+      file: "advanced_css.zip",
     },
-    {
-      title: "Track Assignment Progress",
-      icon: (
-        <LineChartOutlined style={{ fontSize: "36px", color: "#faad14" }} />
-      ),
-      description:
-        "Monitor student progress and analyze performance trends over time.",
-      buttonText: "Track Progress",
-    },
-  ];
+  ]);
+  function handleOpenModal() {
+    setModal(true) 
+  }
+  function handleSubmitModal() {
+    console.log("course=>",assignment);
+    console.log("courseDescription",assignmentDes);
+    console.log("courseDescription",File);
+    console.log("courseDescription",dueDate);
+    const newAssignments={
+      key:`${dataSource.length+1}`,
+      title:assignment,
+      description:assignmentDes,
+      dueDate:dueDate,
+      file:file,
+    }
+      setDataSource([...dataSource,newAssignments])
+    messageApi.open({
+      type: 'success',
+      content: 'Your Assignment is Submited Successfully!',
+    }); 
+    setModal(false)
+  }
 
   return (
     <div
       className={`${
         !collapsed ? "mx-72" : "mx-32"
-      } h-screen bg-[#F6F6F6] p-5`}
+      } min-h-screen overflow-x-hidden  bg-[#F6F6F6] p-5`}
     >
-      {/* Page Title */}
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Title level={2} style={{ color: "#333" }}>
-          Assignment Management
-        </Title>
-        <Text style={{ color: "#595959", fontSize: "16px" }}>
-          Manage all aspects of your assignments in one place.
-        </Text>
-      </div>
 
-      {/* Cards Section */}
-      <Row gutter={[24, 24]} justify="center">
-        {sections.map((section, index) => (
-          <Col xs={24} sm={12} md={8} key={index}>
-            <Card
-              hoverable
-              style={{
-                width: "250px", // Card width
-                margin: "0 auto", // Center card and add margin between them
-                textAlign: "center",
-                borderRadius: "10px",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                background: "#fff",
-              }}
-            >
-              <Space direction="vertical" align="center" size="middle">
-                <div>{section.icon}</div>
-                <Title level={4}>{section.title}</Title>
-                <Text style={{ color: "#595959" }}>{section.description}</Text>
-                <Button type="primary" size="large">
-                  {section.buttonText}
-                </Button>
-              </Space>
-            </Card>
-          </Col>
-        ))}
-      </Row>
 
-      {/* Footer Section */}
-      <div
-        style={{
-          marginTop: "40px",
-          textAlign: "center",
-          color: "#595959",
-          fontSize: "14px",
-        }}
+      <h1 className="font-semibold text-[#333] text-2xl my-4">Create Assignments!</h1>
+      <Button type="primary" onClick={handleOpenModal}>
+        Create Assignments
+      </Button>
+      <Table 
+        className="mt-4"
+        dataSource={dataSource}
+        columns={[
+          {
+            title: "Assignment Title",
+            dataIndex: "title",
+            key: "title",
+          },
+          {
+            title: "Description",
+            dataIndex: "description", 
+            key: "description",
+          },
+          {
+            title: "Due Date",
+            dataIndex: "dueDate", 
+            key: "dueDate",
+          },
+          {
+            title: "Uploaded File",
+            dataIndex: "file",
+            key: "file",
+          },
+        ]}
+      />
+      <Modal
+        title="Create Assignment"
+        open={modal}
+        onCancel={()=>setModal(false)}
+        footer={null}
       >
-      </div>
+        <Form layout="vertical">
+          <Form.Item label="Assignment Title">
+            <Input value={assignment} placeholder="Enter assignment title" onChange={(e)=>setAssignment(e.target.value)}/>
+          </Form.Item>
+
+          <Form.Item label="Description">
+            <Input.TextArea value={assignmentDes} placeholder="Enter assignment description" onChange={(e)=>SetAssignmentDes(e.target.value)}/>
+          </Form.Item>
+
+          <Form.Item label="Due Date">
+            <Input value={dueDate} type="date" onChange={(e)=>setdueDate(e.target.value)}/>
+          </Form.Item>
+
+          <Form.Item label="Upload File">
+            <Input value={file} type="file" onChange={(e)=>setFile(e.target.value)}/>
+          </Form.Item>
+
+          {/* Submit Button */}
+          <Button onClick={handleSubmitModal} type="primary" className="w-full">
+            Create Assignment
+          </Button>
+        </Form>
+      </Modal>
     </div>
   );
 };

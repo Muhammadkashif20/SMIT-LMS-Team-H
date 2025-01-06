@@ -1,23 +1,31 @@
 import React, { useContext, useState } from "react";
 import { sideBarContext } from "../../../Context/SidebarContext";
-import { Button, Modal, Form, Input, Table } from "antd";
+import { Button, Modal, Form, Input, Table, Typography } from "antd";
 
 const CoursesManage = () => {
   const { collapsed } = useContext(sideBarContext);
-  const [modal,setModal]=useState(false)
-  function handleModelOpen() {
-    setModal(true)
-  }
   return (
-    <div className={` ${!collapsed ? "mx-72" : "mx-32"} h-screen bg-[#F6F6F6] p-4`}>
-      <h1 className="font-semibold text-2xl mb-4">Courses Management</h1>
-      <Button type="primary" onClick={handleModelOpen}>Create Course</Button>
+    <div
+      className={` ${!collapsed ? "mx-72" : "mx-32"} h-screen bg-[#F6F6F6] p-4`}
+    >
+       <div style={{ textAlign: "center", marginBottom: "30px" }}>
+        <Title level={2} style={{ color: "#333" }}>
+          Course Management
+        </Title>
+        <Text style={{ color: "#595959", fontSize: "16px" }}>
+          Manage all aspects of your Courses in one place.
+        </Text>
+      </div>
+      <h1 className="font-semibold text-[#333] text-2xl my-4">Create Courses!</h1>
+      <Button type="primary" onClick={handleOpenModal}>
+        Create Course
+      </Button>
       <Table
         className="mt-4"
         dataSource={[]}
         columns={[
           {
-            title: "Course Name",
+            title: "Batch Name",
             dataIndex: "name",
             key: "name",
           },
@@ -28,19 +36,7 @@ const CoursesManage = () => {
           },
         ]}
       />
-      <Modal title="Create Course" open={false} footer={null}>
-        <Form layout="vertical">
-          <Form.Item label="Course Name">
-            <Input placeholder="Enter course name" />
-          </Form.Item>
-          <Form.Item label="Description">
-            <Input.TextArea placeholder="Enter course description" />
-          </Form.Item>
-          <Button type="primary" className="w-full">
-            Add Course
-          </Button>
-        </Form>
-      </Modal>
+    
     </div>
   );
 };

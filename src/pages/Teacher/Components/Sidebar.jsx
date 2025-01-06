@@ -38,7 +38,7 @@ const Sidebar = () => {
     {
       key: "3",
       icon: <CommentOutlined />,
-      label: <Link to="/Teacher/Communication">Communication</Link>,
+      label: <Link to="/Teacher/Announcement">Announcement</Link>,
     },
     {
       key: "4",
