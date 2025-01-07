@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { Layout, Menu, Button } from "antd";
 import sideLogo from "../src/image/SMIT.png";
-
 import {
   AppstoreOutlined,
   FileSearchOutlined,
@@ -10,12 +9,12 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { sideBarContext } from "../src/Context/SidebarContext";
 
 const { Sider } = Layout;
 
 const Sidebar = () => {
-  const { collapsed, setCollapsed } = useContext(sideBarContext);
+  const [collapsed, setCollapsed] = useState(true); // Initial collapsed state
+
   const menuItems = [
     {
       key: "1",
@@ -49,7 +48,7 @@ const Sidebar = () => {
       <Sider
         className="sidebar"
         width={230}
-        collapsed={collapsed}
+        collapsed={collapsed} // Use collapsed state here
         style={{
           background: "#FFFFFF",
           overflow: "auto",
@@ -61,8 +60,8 @@ const Sidebar = () => {
         <div
           style={{
             color: "black",
-            padding:"16px",
-            marginLeft:"60px",
+            padding: "16px",
+            marginLeft: "60px",
             textAlign: "center",
             fontSize: "18px",
             fontWeight: "bold",
@@ -70,9 +69,10 @@ const Sidebar = () => {
             marginBottom: "10px",
           }}
         >
-            {!collapsed && (
-              <img src={sideLogo} className="mx-24" alt="Logo" width={70} />
-            )}
+          {/* Only show the logo if the sidebar is not collapsed */}
+          {!collapsed && (
+            <img src={sideLogo} className="mx-24" alt="Logo" width={70} />
+          )}
         </div>
         <Menu
           theme="light"
@@ -84,16 +84,17 @@ const Sidebar = () => {
         />
         <Button
           type="primary"
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={() => setCollapsed(!collapsed)} // Toggle collapse
           style={{
             position: "absolute",
             bottom: "20px",
-            left: collapsed ? "18px" : "60px",
-            width: collapsed ? "40px" : "100px",
+            left: collapsed ? "18px" : "60px", // Adjust button position
+            width: collapsed ? "40px" : "100px", // Adjust button width
             transition: "all 0.3s",
+            borderRadius: "5px",
           }}
         >
-          {collapsed ? ">" : " Collapse"}
+          {collapsed ? ">" : "<"} {/* Button to toggle collapse */}
         </Button>
       </Sider>
     </Layout>

@@ -7,16 +7,14 @@ import {
   CalendarOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import { sideBarContext } from "../../../Context/SidebarContext";
 const Courses = () => {
-  const { collapsed } = useContext(sideBarContext);
   return (
     <div className="h-screen bg-[#F6F6F6]">
 
     <div
-      className={`my-5 ${
-        !collapsed ? "mx-72" : "mx-32"
-      } overflow-hidden`}
+      className={`my-5 
+       "mx-32"
+       overflow-hidden`}
     >
       <h1 className="font-semibold text-2xl">Enrolled Course!</h1>
       <Card className="w-[380px] mt-8 overflow-hidden shadow-md rounded-lg hover:shadow-lg transition-shadow">

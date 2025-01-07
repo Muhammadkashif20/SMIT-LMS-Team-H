@@ -1,27 +1,21 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { Layout, Menu, Button } from "antd";
 import sideLogo from "../../../image/SMIT.png";
-
 import {
   HomeOutlined,
   FileAddOutlined,
-  MessageOutlined,
-  NotificationOutlined,
   CommentOutlined,
   BookOutlined,
   TeamOutlined,
   UserOutlined,
-  EditOutlined ,
-  LineChartOutlined ,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { sideBarContext } from "../../../Context/SidebarContext";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 const Sidebar = () => {
-  const { collapsed, setCollapsed } = useContext(sideBarContext);
+  const [collapsed, setCollapsed] = useState(true); // Initial collapsed state
 
   const menuItems = [
     {
@@ -32,8 +26,7 @@ const Sidebar = () => {
     {
       key: "2",
       icon: <FileAddOutlined />,
-      label:<Link to="/Teacher/AssignmentManage">Assignments</Link>,
-
+      label: <Link to="/Teacher/AssignmentManage">Assignments</Link>,
     },
     {
       key: "3",
@@ -58,18 +51,20 @@ const Sidebar = () => {
   ];
 
   return (
-    <Layout>
+    <Layout >
       <Sider
         className="sidebar"
-        width={230}
+        width={collapsed ? 50 : 230} // Conditionally set width based on collapse state
         collapsed={collapsed}
         style={{
           background: "#FFFFFF",
           overflow: "auto",
-          height: "100vh",
           position: "fixed",
           left: 0,
-          transition: "width 0.3s ease",
+          top: 0,
+          bottom: 0,
+          transition: "width 0.3s ease", // Smooth transition for width change
+          zIndex: 999, // Make sure sidebar is on top
         }}
       >
         <div
@@ -91,17 +86,16 @@ const Sidebar = () => {
               height: "100%",
             }}
           >
-            {!collapsed && (
-              <img
-                src={sideLogo}
-                alt="Logo"
-                style={{
-                  width: "70px",
-                  height: "70px",
-                  objectFit: "contain",
-                }}
-              />
-            )}
+            <img
+              src={sideLogo}
+              alt="Logo"
+              style={{
+                width: "70px",
+                height: "70px",
+                objectFit: "contain",
+                display: collapsed ? "none" : "block", // Hide logo when collapsed
+              }}
+            />
           </div>
         </div>
 
@@ -111,15 +105,12 @@ const Sidebar = () => {
           style={{
             background: "#FFFFFF",
             padding: "0 10px",
+            marginTop: "20px", // Add some margin for spacing
           }}
         >
           {menuItems.map((item) =>
             item.children ? (
-              <SubMenu
-                key={item.key}
-                icon={item.icon}
-                title={item.label}
-              >
+              <SubMenu key={item.key} icon={item.icon} title={item.label}>
                 {item.children.map((child) => (
                   <Menu.Item key={child.key} icon={child.icon}>
                     {child.label}
@@ -136,19 +127,24 @@ const Sidebar = () => {
 
         <Button
           type="primary"
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={() => setCollapsed(!collapsed)} // Toggle collapse
           style={{
             position: "absolute",
             bottom: "20px",
-            left: collapsed ? "18px" : "60px",
-            width: collapsed ? "40px" : "100px",
-            transition: "all 0.3s ease",
+            left: collapsed ? "10px" : "60px", // Adjust button position based on collapse state
+            width: collapsed ? "40px" : "100px", // Adjust button width based on collapse state
+            transition: "all 0.3s ease", // Smooth transition for button position
             borderRadius: "5px",
           }}
         >
-          {collapsed ? ">" : "Collapse"}
+          {collapsed ? ">" : "<"} {/* Button to toggle collapse */}
         </Button>
       </Sider>
+
+      {/* Add content section to ensure sidebar doesn't overlap */}
+      <Layout style={{ marginLeft: collapsed ? "50px" : "230px", transition: "margin-left 0.3s ease" }}>
+        {/* Your content goes here */}
+      </Layout>
     </Layout>
   );
 };

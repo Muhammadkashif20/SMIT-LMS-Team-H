@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
-import { sideBarContext } from "../../../Context/SidebarContext";
+import React from "react";
 import { Card, List, Typography } from "antd";
 
 const { Title, Text } = Typography;
 
 const Announcement = () => {
-  const { collapsed } = useContext(sideBarContext);
-
-  // Sample announcements data
   const announcements = [
     {
       id: 1,
@@ -33,11 +29,7 @@ const Announcement = () => {
   ];
 
   return (
-    <div
-      className={`p-6 bg-[#F6F6F6] min-h-screen ${
-        !collapsed ? "ml-72" : "ml-32"
-      }`}
-    >
+    <div className={`p-6 bg-[#F6F6F6] min-h-screen mx-32`}>
       {/* Page Title */}
       <Title level={2} style={{ marginBottom: "20px" }}>
         Announcements

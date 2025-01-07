@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
-import { sideBarContext } from "../../../Context/SidebarContext";
 import { Table, Tag, Typography } from "antd";
 
 const { Title } = Typography;
 
 const TrackingStudent = () => {
-  const { collapsed } = useContext(sideBarContext);
-
   // Sample data for students
   const data = [
     {
@@ -70,9 +67,7 @@ const TrackingStudent = () => {
 
   return (
     <div
-      className={`p-6 bg-[#F6F6F6] min-h-screen ${
-        !collapsed ? "ml-56" : "ml-20"
-      }`}
+      className={`p-6 bg-[#F6F6F6] min-h-screen mx-32`}
     >
       {/* Page Title */}
       <Title level={2} style={{ marginBottom: "20px" }}>

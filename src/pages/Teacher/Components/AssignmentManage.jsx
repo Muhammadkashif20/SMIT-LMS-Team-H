@@ -1,10 +1,8 @@
 import React, { useContext, useState } from "react";
-import { sideBarContext } from "../../../Context/SidebarContext";
 import { Table, Button, Typography, message, Modal, Form, Input } from "antd";
 const { Title, Text } = Typography;
 
 const AssignmentManage = () => {
-  const { collapsed } = useContext(sideBarContext);
   const [modal, setModal] = useState(false);
   const [assignment,setAssignment]=useState("")
   const [assignmentDes,SetAssignmentDes]=useState("")
@@ -52,9 +50,9 @@ const AssignmentManage = () => {
 
   return (
     <div
-      className={`${
-        !collapsed ? "mx-72" : "mx-32"
-      } min-h-screen overflow-x-hidden  bg-[#F6F6F6] p-5`}
+      className={`
+       mx-32
+       min-h-screen overflow-x-hidden  bg-[#F6F6F6] p-5`}
     >
       <h1 className="font-semibold text-[#333] text-2xl my-4">Create Assignments!</h1>
       <Button type="primary" onClick={handleOpenModal}>
