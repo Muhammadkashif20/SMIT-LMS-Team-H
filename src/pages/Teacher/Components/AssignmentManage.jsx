@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import { sideBarContext } from "../../../Context/SidebarContext";
 import { Table, Button, Typography, message, Modal, Form, Input } from "antd";
-// import { EditOutlined, CheckCircleOutlined, LineChartOutlined } from "@ant-design/icons";
-
 const { Title, Text } = Typography;
 
 const AssignmentManage = () => {
@@ -58,13 +56,13 @@ const AssignmentManage = () => {
         !collapsed ? "mx-72" : "mx-32"
       } min-h-screen overflow-x-hidden  bg-[#F6F6F6] p-5`}
     >
-
-
       <h1 className="font-semibold text-[#333] text-2xl my-4">Create Assignments!</h1>
       <Button type="primary" onClick={handleOpenModal}>
         Create Assignments
       </Button>
+      <div >
       <Table 
+        style={{ width: "100rem" }}
         className="mt-4"
         dataSource={dataSource}
         columns={[
@@ -89,7 +87,8 @@ const AssignmentManage = () => {
             key: "file",
           },
         ]}
-      />
+        />
+        </div>
       <Modal
         title="Create Assignment"
         open={modal}

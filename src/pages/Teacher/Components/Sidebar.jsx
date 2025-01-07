@@ -43,7 +43,7 @@ const Sidebar = () => {
     {
       key: "4",
       icon: <BookOutlined />,
-      label: <Link to="/Teacher/CoursesManage">Courses</Link>,
+      label: <Link to="/Teacher/BatchManage">Batches</Link>,
     },
     {
       key: "5",

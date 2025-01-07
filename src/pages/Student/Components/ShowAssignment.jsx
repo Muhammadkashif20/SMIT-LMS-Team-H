@@ -35,7 +35,7 @@ const ShowAssignment = () => {
     },
   ];
   function handleViewAssignment(id) {
-    navigate(`/Assignments/${id}`);
+    navigate(`/AssignmentDetail/${id}`);
   }
 
   const columns = [
